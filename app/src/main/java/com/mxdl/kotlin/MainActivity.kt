@@ -1,14 +1,13 @@
 package com.mxdl.kotlin
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.TextView
-import com.mxdl.kotlin.util.addMyTextChangeListener
-import com.mxdl.kotlin.util.addTextChenageListenerDsl
-import com.mxdl.kotlin.util.dependencies
+import com.mxdl.kotlin.util.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.w3c.dom.Text
 
@@ -41,5 +40,13 @@ class MainActivity : AppCompatActivity() {
         for(lib in libs){
             Log.v("MYTAG","lib:$lib")
         }
+
+        getSharedPreferences("data", Context.MODE_PRIVATE)
+            .open {
+                putString("key1","a")
+                putString("key2","b")
+            }
+
+        "show".showToast(this)
     }
 }
