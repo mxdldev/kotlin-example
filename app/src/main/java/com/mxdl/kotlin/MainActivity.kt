@@ -1,6 +1,7 @@
 package com.mxdl.kotlin
 
 import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -15,6 +16,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val kClass = MainActivity::class
+
+        var list = ArrayList<Int>()
+        var l :List<Int>
+        MainActivity::class.java
+        var intent = Intent(this,MainActivity::class.java)
 //        txtName.addTextChangedListener(object : TextWatcher {
 //            override fun afterTextChanged(p0: Editable?) {
 //            }
