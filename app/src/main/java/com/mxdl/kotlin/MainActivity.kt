@@ -2,58 +2,81 @@ package com.mxdl.kotlin
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import com.mxdl.kotlin.util.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.*
 import org.w3c.dom.Text
+import java.io.BufferedReader
+import java.lang.StringBuilder
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val kClass = MainActivity::class
 
-        var list = ArrayList<Int>()
-        var l :List<Int>
-        MainActivity::class.java
-        var intent = Intent(this,MainActivity::class.java)
-//        txtName.addTextChangedListener(object : TextWatcher {
-//            override fun afterTextChanged(p0: Editable?) {
-//            }
-//
-//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//            }
-//
-//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-//                Log.v("MYTAG", "text:" + p0)
-//            }
-//
-//        })
-        txtName.addMyTextChangeListener(onTextChanged = { charSequence, i, i2, i3 -> Log.v("MYTAG", "text:$charSequence")})
-
-        txtName.addTextChenageListenerDsl {
-            onTextChanged { charSequence, i, i2, i3 -> Log.v("MYTAG", "text1:$charSequence")}
-        }
-
-        var libs = dependencies {
-            implementation("com.spuare.okhttp")
-            implementation("com.spuare.retrofit")
-        }
-        for(lib in libs){
-            Log.v("MYTAG","lib:$lib")
-        }
-
-        getSharedPreferences("data", Context.MODE_PRIVATE)
-            .open {
-                putString("key1","a")
-                putString("key2","b")
+        btn.setOnClickListener {
+           var scope = CoroutineScope(Dispatchers.IO+Job())
+            scope.launch {
+               // var result = test()
+                //println("result:$result")
+//                launch { test2() }
+//                launch { test3() }
+                 println(test4())
+                 println("launch end")
             }
+            println("onClick end")
+//            runBlocking {
+//                test1()
+//            }
+        }
 
-        "show".showToast(this)
+    }
+    suspend fun test4():String{
+        delay(5000)
+        return "test4"
+    }
+    suspend fun test2(){
+        withContext(Dispatchers.IO){
+            println(1)
+            println(2)
+            println(3)
+        }
+
+    }
+    suspend fun test3(){
+        withContext(Dispatchers.IO){
+            println(4)
+            println(5)
+            println(6)
+        }
+    }
+   suspend fun test1(){
+       withContext(Dispatchers.IO){
+           println("Thread:${Thread.currentThread().name}")
+       }
+   }
+   @RequiresApi(Build.VERSION_CODES.N)
+   suspend fun test():String{
+        var httpURLConnection = URL("http://www.baidu.com").openConnection()
+        httpURLConnection.connect()
+        val bufferedReader = httpURLConnection.getInputStream().bufferedReader()
+        StringBuilder().apply {
+            for(line in bufferedReader.lines()){
+                append(line)
+            }
+        }.let {
+            //Log.v("MYTAG","result:${it.toString()}")
+            return it.toString()
+        }
     }
 }
