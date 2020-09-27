@@ -25,7 +25,6 @@ fun main(args: Array<String>) {
 
         //系统自带的携程支持
         //val result = RetrofitManager.create<WeatherService>().getWeather1()
-
         println("result:${result}")
     }
 }
