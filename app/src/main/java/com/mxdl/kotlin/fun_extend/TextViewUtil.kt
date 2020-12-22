@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.util
+package com.mxdl.kotlin.fun_extend
 
 import android.text.Editable
 import android.text.TextWatcher

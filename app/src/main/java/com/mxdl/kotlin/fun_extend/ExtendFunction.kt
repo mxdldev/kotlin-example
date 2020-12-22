@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.util
+package com.mxdl.kotlin.fun_extend
 
 /**
  * Description: <扩展函数><br>

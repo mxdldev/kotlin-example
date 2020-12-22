@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.util
+package com.mxdl.kotlin.operator
 
 /**
  * Description: <OperatorTest><br>
@@ -9,12 +9,12 @@ package com.mxdl.kotlin.util
  */
 //用运算符重载实现两个对象相加
 class Money(val value: Int){
-    operator fun plus(money: Money): Money{
+    operator fun plus(money: Money): Money {
         var sum = value + money.value
         return Money(sum)
     }
 
-    operator fun plus(money: Int): Money{
+    operator fun plus(money: Int): Money {
         var sum = value + money
         return Money(sum)
     }

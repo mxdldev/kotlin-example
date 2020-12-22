@@ -1,8 +1,7 @@
-package com.mxdl.kotlin.util
+package com.mxdl.kotlin.fun_extend
 
 import android.content.ContentValues
 import android.content.SharedPreferences
-import android.view.contentcapture.DataShareWriteAdapter
 
 /**
  * Description: <HeightLevelFunctionYY><br>
@@ -32,5 +31,5 @@ fun cvOf(vararg pairs: Pair<String, Any?>): ContentValues {
 }
 
 fun main(args: Array<String>) {
-    cvOf("key1" to 1,"key2" to "2")
+    cvOf("key1" to 1, "key2" to "2")
 }

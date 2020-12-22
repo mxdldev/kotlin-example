@@ -1,6 +1,4 @@
-package com.mxdl.kotlin.util
-
-import java.lang.StringBuilder
+package com.mxdl.kotlin.fun_hei
 
 /**
  * Description: <HeightLevelFunction><br>
@@ -31,10 +29,9 @@ fun testAbc(block:(Int,Int) -> Int): Int{
 }
 fun main(args: Array<String>) {
     //2.lambda表示调用
-    val result3 = num1AndNum211(1, 2) {
-            n1, n2 ->
-        if(true){
-           // return
+    val result3 = num1AndNum211(1, 2) { n1, n2 ->
+        if (true) {
+            // return
         }
         n1 + n2
     }

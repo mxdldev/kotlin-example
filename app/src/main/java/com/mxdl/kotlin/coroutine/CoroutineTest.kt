@@ -3,7 +3,6 @@ package com.mxdl.kotlin.coroutine
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 /**
  * Description: <CoroutineTest><br>
@@ -21,6 +20,7 @@ fun main(args: Array<String>) {
 
     runBlocking {
         //自定义携程支持
+        delay(1000 * 4)
         val result = RetrofitManager.create<WeatherService>().getWeather().await()
 
         //系统自带的携程支持
@@ -28,7 +28,6 @@ fun main(args: Array<String>) {
         println("result:${result}")
     }
 }
-
 
 interface WeatherService {
     @GET("?version=v9&appid=23035354&appsecret=8YvlPNrz=city=北京")

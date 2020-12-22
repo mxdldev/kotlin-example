@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.util
+package com.mxdl.kotlin.dsl
 
 /**
  * Description: <DependDsl><br>
@@ -18,4 +18,10 @@ fun dependencies(block: DependDsl.()->Unit): ArrayList<String>{
     var dependDsl = DependDsl()
     dependDsl.block()
     return dependDsl.libs
+}
+fun main(args: Array<String>) {
+    dependencies {
+        implementation("github.com:retrofit:1.0")
+        implementation("github.com:okhttp:1.1")
+    }
 }

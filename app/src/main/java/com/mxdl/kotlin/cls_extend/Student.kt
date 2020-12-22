@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.bean
+package com.mxdl.kotlin.cls_extend
 
 /**
  * Description: <Student><br>

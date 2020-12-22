@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.util
+package com.mxdl.kotlin.dsl
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -42,4 +42,8 @@ fun TextView.addTextChenageListenerDsl(block: TextChangeListenerDsl.()->Unit){
     var textChangeListenerDsl = TextChangeListenerDsl()
     textChangeListenerDsl.block()
     addTextChangedListener(textChangeListenerDsl)
+}
+fun main(args: Array<String>) {
+
+
 }
