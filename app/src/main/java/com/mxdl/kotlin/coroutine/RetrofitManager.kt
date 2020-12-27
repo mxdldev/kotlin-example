@@ -20,7 +20,7 @@ import kotlin.coroutines.suspendCoroutine
 class RetrofitManager {
     companion object {
         var retrofit = Retrofit.Builder()
-            .baseUrl("https://tianqiapi.com/free/day/")
+            .baseUrl("http://192.168.33.150:8080/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
