@@ -1,8 +1,7 @@
 package com.mxdl.kotlin.generic
 
-import com.mxdl.kotlin.bean.Person
-import com.mxdl.kotlin.bean.Student
-import com.mxdl.kotlin.bean.Teacher
+import com.mxdl.kotlin.cls_extend.Person
+import com.mxdl.kotlin.cls_extend.Student
 
 /**
  * Description: <TestGeneric><br>

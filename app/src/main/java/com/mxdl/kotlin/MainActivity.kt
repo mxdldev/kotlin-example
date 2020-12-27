@@ -10,7 +10,6 @@ import android.text.TextWatcher
 import android.util.Log
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import com.mxdl.kotlin.util.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import org.w3c.dom.Text

@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.util
+package com.mxdl.kotlin.cls_sealed
 
 /**
  * Description: <密封类><br>

@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.util
+package com.mxdl.kotlin.fun_stand
 
 import android.content.Intent
 import java.lang.StringBuilder
@@ -21,7 +21,7 @@ fun testLet1(){
 
 //2. let简化对象的非空判断
 fun testLet2(){
-    var person = Person("Jim",18)
+    var person = Person("Jim", 18)
     person?.let {
         it.work()
         it.study()
