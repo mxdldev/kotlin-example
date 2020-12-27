@@ -39,6 +39,20 @@ class MainActivity : AppCompatActivity() {
 //            }
         }
 
+        var intent = Intent(baseContext,MainActivity::class.java)
+        intent.putExtra("param1","name")
+        intent.putExtra("param1",18)
+        startActivity(intent)
+
+        startActivty<MainActivity>(baseContext){
+            intent.putExtra("param1","name")
+            intent.putExtra("param1",18)
+        }
+    }
+    inline fun<reified T> startActivty(contxt:Context,block:Intent.()->Unit){
+        var intent = Intent(contxt,T::class.java)
+        intent.block()
+        contxt.startActivity(intent)
     }
     suspend fun test4():String{
         delay(5000)
