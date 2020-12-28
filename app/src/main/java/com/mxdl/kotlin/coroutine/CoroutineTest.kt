@@ -1,9 +1,9 @@
 package com.mxdl.kotlin.coroutine
 
-import com.mxdl.kotlin.bean.BaseResponse
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 /**
  * Description: <CoroutineTest><br>
@@ -21,18 +21,15 @@ fun main(args: Array<String>) {
 
     runBlocking {
         //自定义携程支持
-<<<<<<< HEAD
         //val result = RetrofitManager.create<WeatherService>().getWeather().await()
-=======
         delay(1000 * 4)
         val result = RetrofitManager.create<WeatherService>().getWeather().await()
->>>>>>> 312ca85198443c1fd7b55f4eb735bdee92d9867b
 
         //系统自带的携程支持
         //val result = RetrofitManager.create<WeatherService>().getWeather1()
 
-        var result = RetrofitManager.create<UserService>().login("mxdl",123456).await()
-        println("result:${result}")
+       /* var result = RetrofitManager.create<UserService>().login("mxdl",123456).await()
+        println("result:${result}")*/
     }
 }
 
@@ -45,7 +42,7 @@ interface WeatherService {
 }
 interface UserService{
     @GET("user/login/get")
-    fun login(@Query("username") username:String,@Query("password") password:Int):Call<BaseResponse>
+    fun login(@Query("username") username:String, @Query("password") password:Int):Call<BaseResponse>
 }
 
 //5.CoroutineScope函数的使用
