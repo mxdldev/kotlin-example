@@ -1,5 +1,6 @@
 package com.mxdl.kotlin
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -58,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         delay(5000)
         return "test4"
     }
+
     suspend fun test2(){
         withContext(Dispatchers.IO){
             println(1)
