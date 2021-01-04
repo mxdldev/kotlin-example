@@ -1,5 +1,7 @@
 package com.mxdl.kotlin.coroutine
 
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,7 +22,16 @@ import kotlin.coroutines.suspendCoroutine
 class RetrofitManager {
     companion object {
         var retrofit = Retrofit.Builder()
-            .baseUrl("http://192.168.33.150:8080/api/")
+            //.baseUrl("http://192.168.33.150:8080/api/")
+            .client(
+                OkHttpClient().newBuilder()
+                    .addInterceptor(
+                        HttpLoggingInterceptor()
+                            .setLevel(HttpLoggingInterceptor.Level.BODY)
+                    )
+                    .build()
+            )
+            .baseUrl("https://v0.yiketianqi.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

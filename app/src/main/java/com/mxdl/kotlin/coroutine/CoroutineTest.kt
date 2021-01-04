@@ -1,7 +1,14 @@
 package com.mxdl.kotlin.coroutine
 
+import com.mxdl.kotlin.coroutine.data.Weather
 import kotlinx.coroutines.*
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -13,36 +20,91 @@ import retrofit2.http.Query
  * Update:     <br>
  */
 fun main(args: Array<String>) {
-    //test()
-    //Thread.sleep(100)
-    //test1()
-    //test4()
-    //Thread.sleep(1000)
+    //1.原生调用
+    //getWeather()
+    //2.自定义携程调用
+    getWeather1()
+    //3.Retrofit携程
+    //getWeather2()
+}
 
+private fun getWeather2() {
     runBlocking {
-        //自定义携程支持
-        //val result = RetrofitManager.create<WeatherService>().getWeather().await()
-        delay(1000 * 4)
-        //val result = RetrofitManager.create<WeatherService>().getWeather().await()
-
-        //系统自带的携程支持
-        //val result = RetrofitManager.create<WeatherService>().getWeather1()
-
-        var result = RetrofitManager.create<UserService>().login("mxdl",123456).await()
-        println("result:${result}")
+        launch {
+            var retrofit = Retrofit.Builder()
+                .client(
+                    OkHttpClient().newBuilder()
+                        .addInterceptor(
+                            HttpLoggingInterceptor()
+                                .setLevel(HttpLoggingInterceptor.Level.BODY)
+                        )
+                        .build()
+                )
+                .baseUrl("https://v0.yiketianqi.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+            val service = retrofit.create(WeatherService::class.java)
+            val weather = service.getWeather2();
+            println(weather)
+        }
     }
 }
 
-interface WeatherService {
-    @GET("?version=v9&appid=23035354&appsecret=8YvlPNrz=city=北京")
-    fun getWeather(): Call<Error>
+private fun getWeather1() {
+    runBlocking {
+        launch {
+            val weather = RetrofitManager.retrofit.create(WeatherService::class.java)
+                .getWeather1()
+                .await()
+            println(weather)
 
-    @GET("?version=v9&appid=23035354&appsecret=8YvlPNrz=city=北京")
-    suspend fun getWeather1(): Error
+        }
+    }
 }
-interface UserService{
+
+private fun getWeather() {
+    var retrofit = Retrofit.Builder()
+        .client(
+            OkHttpClient().newBuilder()
+                .addInterceptor(
+                    HttpLoggingInterceptor()
+                        .setLevel(HttpLoggingInterceptor.Level.BODY)
+                )
+                .build()
+        )
+        .baseUrl("https://v0.yiketianqi.com/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+    val service = retrofit.create(WeatherService::class.java)
+    service.getWeather().enqueue(object : Callback<Weather> {
+        override fun onFailure(call: Call<Weather>, t: Throwable) {
+            println("onFail:" + t.toString())
+        }
+
+        override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
+            println("onResponse:" + response.body())
+        }
+
+    })
+}
+
+interface WeatherService {
+    @GET("api?version=v61&appid=92286346&appsecret=fi5kztRL")
+    fun getWeather(): Call<Weather>
+
+    @GET("api?version=v61&appid=92286346&appsecret=fi5kztRL")
+    fun getWeather1(): Call<Weather>
+
+    @GET("api?version=v61&appid=92286346&appsecret=fi5kztRL")
+    suspend fun getWeather2(): Weather
+}
+
+interface UserService {
     @GET("user/login/get")
-    fun login(@Query("username") username:String, @Query("password") password:Int):Call<BaseResponse>
+    fun login(
+        @Query("username") username: String,
+        @Query("password") password: Int
+    ): Call<BaseResponse>
 }
 
 //5.CoroutineScope函数的使用
