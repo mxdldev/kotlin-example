@@ -23,13 +23,13 @@ fun main(args: Array<String>) {
         //自定义携程支持
         //val result = RetrofitManager.create<WeatherService>().getWeather().await()
         delay(1000 * 4)
-        val result = RetrofitManager.create<WeatherService>().getWeather().await()
+        //val result = RetrofitManager.create<WeatherService>().getWeather().await()
 
         //系统自带的携程支持
         //val result = RetrofitManager.create<WeatherService>().getWeather1()
 
-       /* var result = RetrofitManager.create<UserService>().login("mxdl",123456).await()
-        println("result:${result}")*/
+        var result = RetrofitManager.create<UserService>().login("mxdl",123456).await()
+        println("result:${result}")
     }
 }
 
