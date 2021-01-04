@@ -1,5 +1,7 @@
 package com.mxdl.kotlin.test
 
+import kotlinx.coroutines.yield
+
 /**
  * Description: <Person><br>
  * Author:      mxdl<br>
