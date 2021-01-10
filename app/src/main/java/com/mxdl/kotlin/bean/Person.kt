@@ -7,9 +7,4 @@ package com.mxdl.kotlin.bean
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-open class Person(val name:String,val age:Int){
-    init {
-        var a = 1
-        var b = 2
-    }
-}
+open class Person(val name:String,val age:Int)
