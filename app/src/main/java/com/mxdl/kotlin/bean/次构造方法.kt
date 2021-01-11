@@ -7,7 +7,7 @@ package com.mxdl.kotlin.bean
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-class Student1:Person {
-    constructor(name:String,age:Int,gradeno:Int) :super(name, age)
-    constructor(name: String,age: Int):this(name,age,0)
+class Student1 {
+    constructor(name:String,age:Int,gradeno:Int)
+    constructor(name: String,age: Int)
 }

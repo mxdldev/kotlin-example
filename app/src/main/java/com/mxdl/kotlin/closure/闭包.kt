@@ -1,7 +1,7 @@
 package com.mxdl.kotlin.closure
 
 fun test(): ()->Unit{
-    var a = 3
+    var a = 0
     return fun(){
         a++
         println(a)

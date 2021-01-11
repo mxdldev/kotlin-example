@@ -7,11 +7,11 @@ package com.mxdl.kotlin.bean;
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-class Person1 {
+class Person {
     private String name;
     private int age;
 
-    public Person1(String name, int age) {
+    public Person(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -30,5 +30,13 @@ class Person1 {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    @Override
+    public String toString() {
+        return "Person1{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
     }
 }

@@ -9,9 +9,9 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import com.mxdl.kotlin.dsl.TextWatcherEmpty
-import com.mxdl.kotlin.dsl.addTextChangeListenerLeval
-import com.mxdl.kotlin.dsl.addTextChenageListenerDsl
+import com.mxdl.kotlin.fun_edit_text.TextWatcherEmpty
+import com.mxdl.kotlin.fun_edit_text.addTextChangeListenerLeval
+import com.mxdl.kotlin.fun_edit_text.addTextChenageListenerDsl
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
 import java.lang.StringBuilder
@@ -22,22 +22,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        btn.setOnClickListener {
-            var scope = CoroutineScope(Dispatchers.IO + Job())
-            scope.launch {
-                // var result = test()
-                //println("result:$result")
-//                launch { test2() }
-//                launch { test3() }
-                println(test4())
-                println("launch end")
-            }
-            println("onClick end")
-//            runBlocking {
-//                test1()
-//            }
-        }
 
         var intent = Intent(baseContext, MainActivity::class.java)
         intent.putExtra("param1", "name")
@@ -81,47 +65,4 @@ inline fun <reified T> startActivty(contxt: Context, block: Intent.() -> Unit) {
     var intent = Intent(contxt, T::class.java)
     intent.block()
     contxt.startActivity(intent)
-}
-
-suspend fun test4(): String {
-    delay(5000)
-    return "test4"
-}
-
-suspend fun test2() {
-    withContext(Dispatchers.IO) {
-        println(1)
-        println(2)
-        println(3)
-    }
-
-}
-
-suspend fun test3() {
-    withContext(Dispatchers.IO) {
-        println(4)
-        println(5)
-        println(6)
-    }
-}
-
-suspend fun test1() {
-    withContext(Dispatchers.IO) {
-        println("Thread:${Thread.currentThread().name}")
-    }
-}
-
-@RequiresApi(Build.VERSION_CODES.N)
-suspend fun test(): String {
-    var httpURLConnection = URL("http://www.baidu.com").openConnection()
-    httpURLConnection.connect()
-    val bufferedReader = httpURLConnection.getInputStream().bufferedReader()
-    StringBuilder().apply {
-        for (line in bufferedReader.lines()) {
-            append(line)
-        }
-    }.let {
-        //Log.v("MYTAG","result:${it.toString()}")
-        return it.toString()
-    }
 }

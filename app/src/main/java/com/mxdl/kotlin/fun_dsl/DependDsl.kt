@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.dsl
+package com.mxdl.kotlin.fun_dsl
 
 /**
  * Description: <DependDsl><br>

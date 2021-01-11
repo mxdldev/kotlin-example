@@ -1,10 +1,10 @@
 package com.mxdl.kotlin.bean
 
 /**
- * Description: <Person><br>
+ * Description: <Student><br>
  * Author:      mxdl<br>
  * Date:        2021/1/3<br>
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-open class Person(val name:String,val age:Int)
+class Student(name:String, age:Int)

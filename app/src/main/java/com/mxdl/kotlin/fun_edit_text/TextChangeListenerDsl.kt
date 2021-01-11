@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.dsl
+package com.mxdl.kotlin.fun_edit_text
 
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,6 +11,20 @@ import android.widget.TextView
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
+fun TextView.addTextChenageListenerDsl(block: TextChangeListenerDsl.()->Unit){
+    var textChangeListenerDsl = TextChangeListenerDsl()
+    textChangeListenerDsl.block()
+    addTextChangedListener(textChangeListenerDsl)
+}
+fun main(args: Array<String>) {
+    var textView: TextView? = null
+    textView?.addTextChenageListenerDsl {
+        afterTextChanged {
+            println(it.toString())
+        }
+    }
+
+}
 class TextChangeListenerDsl: TextWatcher {
     var afterTextChanged: ((Editable?) -> Unit)? = null;
     var beforeTextChanged: ((CharSequence?,Int,Int,Int) -> Unit)? = null
@@ -38,12 +52,3 @@ class TextChangeListenerDsl: TextWatcher {
     }
 }
 
-fun TextView.addTextChenageListenerDsl(block: TextChangeListenerDsl.()->Unit){
-    var textChangeListenerDsl = TextChangeListenerDsl()
-    textChangeListenerDsl.block()
-    addTextChangedListener(textChangeListenerDsl)
-}
-fun main(args: Array<String>) {
-
-
-}
