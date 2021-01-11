@@ -1,0 +1,13 @@
+package com.mxdl.kotlin.coroutine
+
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+
+fun main(args: Array<String>) {
+    //1.启动一个顶级协程,顶级协程维护成本太高
+    val job = GlobalScope.launch {
+        println("hello world")
+    }
+    println("game over")
+    Thread.sleep(1000 * 1)
+}

@@ -1,25 +1,23 @@
-package com.mxdl.kotlin.coroutine.test
+package com.mxdl.kotlin.coroutine
 
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 /**
- * Description: <`Test``><br>
+ * Description: <协程提升并发编程运行效率><br>
  * Author:      mxdl<br>
  * Date:        2021/1/10<br>
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-class Test1 {}
 
 fun main(args: Array<String>) {
-    test()
-    //test1()
+    testThrad()
+    //testCoroutine()
 }
 
-private fun test1() {
+private fun testCoroutine() {
     runBlocking {
         var start = System.currentTimeMillis()
         coroutineScope {
@@ -34,7 +32,7 @@ private fun test1() {
     }
 }
 
-private fun test() {
+private fun testThrad() {
     runBlocking {
         var start = System.currentTimeMillis()
         coroutineScope {
@@ -45,7 +43,4 @@ private fun test() {
         var end = System.currentTimeMillis()
         println(end - start)
     }
-}
-
-fun add() {
 }
