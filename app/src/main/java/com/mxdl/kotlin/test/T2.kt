@@ -7,19 +7,21 @@ package com.mxdl.kotlin.test
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-object T2 {
-    var age = 0
-    fun checkNumber(num:Number){
-        when(num){
-            is Int -> println("num is int")
-            is Double -> println("num is double")
-            else  -> println("number is not support")
-        }
-    }
-}
-
 fun main(args: Array<String>) {
-    var d:Double = 1231.33
-    var c:Float = 1231.33f
-    T2.checkNumber(1)
+    println(Int.MAX_VALUE)
+    println(Int.MIN_VALUE)
+    println(Math.pow(2.0,31.0) - 1)
+    println(Math.pow(2.0,7.0) - 1)
+    println(Math.pow(2.0,31.0))
+
+    var minShort = 0b10000000
+    var maxShort = 0b01111111
+    var maxShort1 = 0b11111111
+    println(minShort)
+    println(maxShort)
+    println(maxShort1)
+    var b = -128
+
+    args.forEach(::print)
+
 }

@@ -1,4 +1,4 @@
-package com.mxdl.kotlin.coroutine
+package com.mxdl.kotlin.coroutine.data
 
 /**
  * Description: <Error><br>
