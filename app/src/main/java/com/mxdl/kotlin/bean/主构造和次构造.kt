@@ -1,7 +1,5 @@
 package com.mxdl.kotlin.bean
 
-import com.mxdl.kotlin.test.Person1
-
 /**
  * Description: <Student1><br>
  * Author:      mxdl<br>

@@ -7,7 +7,7 @@ package com.mxdl.kotlin.bean;
  * Version:     V1.0.0<br>
  * Update:     <br>
  */
-class Person {
+/*class Person {
     private String name;
     private int age;
 
@@ -39,4 +39,4 @@ class Person {
                 ", age=" + age +
                 '}';
     }
-}
+}*/
