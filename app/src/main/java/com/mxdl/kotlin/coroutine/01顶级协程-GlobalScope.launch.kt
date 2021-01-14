@@ -9,5 +9,4 @@ fun main(args: Array<String>) {
         println("hello world")
     }
     println("game over")
-    Thread.sleep(1000 * 1)
 }
