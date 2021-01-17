@@ -26,4 +26,5 @@ fun main(args: Array<String>) {
         val end = System.currentTimeMillis()
         println(end - start)
     }
+    println("main game over")
 }

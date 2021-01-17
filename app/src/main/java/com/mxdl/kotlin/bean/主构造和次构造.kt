@@ -8,6 +8,9 @@ package com.mxdl.kotlin.bean
  * Update:     <br>
  */
 class Student2(val name:String, age:Int, val sno:String, val grade:Int){
+        init {
+
+        }
         constructor(name: String,age: Int):this("",0,name,age)
         constructor():this("",0)
 }

@@ -13,8 +13,8 @@ import kotlinx.coroutines.runBlocking
  */
 
 fun main(args: Array<String>) {
-    testThrad()
-    //testCoroutine()
+    //testThrad()
+    testCoroutine()
 }
 
 private fun testCoroutine() {
