@@ -7,13 +7,14 @@ import kotlinx.coroutines.launch
 
 fun main(args: Array<String>) {
     //1.CoroutineScope下创建的所有协程都被关联在job这个任务上
+    //2.正式项目里面都会用CoroutineScope
     val job = Job()
     var coroutineScope = CoroutineScope(job)
     coroutineScope.launch {
-        delay(1000 * 5)
+        delay(1000 * 3)
         println("hello world")
     }
-    job.cancel()
+    //job.cancel()
     println("...")
-    Thread.sleep(1000 * 8)
+    Thread.sleep(1000 * 5)
 }

@@ -11,8 +11,6 @@ fun main(args: Array<String>) {
             println("error:"+throwable)
         }
         val job = Job()
-        job.join()
-        val job1 = SupervisorJob()
         val coroutineScope = CoroutineScope(Dispatchers.Main + job + handler)
         coroutineScope.launch {
             delay(1000)

@@ -1,5 +1,6 @@
 package com.mxdl.kotlin.coroutine
 
+import com.mxdl.kotlin.coroutine.http.RetrofitManager
 import com.mxdl.kotlin.coroutine.service.WeatherService
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job

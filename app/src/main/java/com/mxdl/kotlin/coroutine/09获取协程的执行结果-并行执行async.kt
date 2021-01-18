@@ -8,16 +8,15 @@ fun main(args: Array<String>) {
     //1.根据await方法调用的位置不同可实现不同执行结果：串行执行，并行执行
     runBlocking {
         val start = System.currentTimeMillis()
-        val deferred = async {
+        val deferred1 = async {
             delay(1000 * 3)
             1 + 1
         }
-        val deferred1 = async {
+        val deferred2 = async {
             delay(1000 * 2)
             2 + 2
         }
-        println(deferred.await())
-        println(deferred1.await())
+        println(deferred1.await() + deferred2.await())
         val end = System.currentTimeMillis()
         println(end - start)
     }
