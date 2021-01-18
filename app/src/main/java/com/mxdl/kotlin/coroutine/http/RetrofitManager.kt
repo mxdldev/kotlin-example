@@ -13,7 +13,7 @@ import kotlin.coroutines.suspendCoroutine
 
 class RetrofitManager {
     companion object {
-        var retrofit = Retrofit.Builder()
+        val retrofit = Retrofit.Builder()
             //.baseUrl("http://192.168.33.150:8080/api/")
             .client(
                 OkHttpClient().newBuilder()
