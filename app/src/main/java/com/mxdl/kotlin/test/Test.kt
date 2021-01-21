@@ -1,6 +1,7 @@
 package com.mxdl.kotlin.test
 
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 
@@ -11,6 +12,7 @@ fun main(args: Array<String>) {
     }
 
     println("main game over")
+
 }
 
 //进行一个耗时的操作
