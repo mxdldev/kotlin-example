@@ -1,4 +1,6 @@
 import bean.Weather
+import http.RetrofitManager
+import http.await1
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,6 +19,10 @@ import service.WeatherService
 fun main(args: Array<String>) {
     //requestWeatherCallback()
     getWeatherByCoroutine()
+    runBlocking {
+        val weather = RetrofitManager.retrofit.create(WeatherService::class.java).getWeather().await1()
+        println(weather)
+    }
 }
 
 private fun getWeatherByCoroutine() {
