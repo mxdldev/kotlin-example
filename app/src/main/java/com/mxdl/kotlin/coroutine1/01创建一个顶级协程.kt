@@ -20,13 +20,7 @@ fun main(args: Array<String>) {
     //一个类中部分方法或部分变量是静态的那么我们就可以使用伴生对象
     Person1.eat()
 
-    //3.作为一个对象表达式
-    Thread(object :Runnable{
-        override fun run() {
-            println("run start")
-        }
 
-    }).start()
     Thread.sleep(1000 * 5)
 }
 //object关键字的使用，在Java中他是所有类的超类，而kotlin中她是一个关键字
@@ -43,4 +37,13 @@ class Person1{
     companion object{
         fun eat(){}
     }
+}
+
+//3.对象表达式
+fun testObject(){
+    Thread(object :Runnable{
+        override fun run() {
+            println("run start")
+        }
+    }).start()
 }
